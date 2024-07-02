@@ -19,7 +19,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          repository: VictoriaMetrics/grafana-datasource
+          repository: VictoriaMetrics/victoriametrics-datasource
           ref: main
           token: ${{ secrets.VM_BOT_GH_TOKEN }}
           path: "__vm-datasource-repo"
@@ -47,18 +47,21 @@ jobs:
           echo '---
           sort: 38
           weight: 38
-          title: Grafana datasource
+          title: VictoriaMetrics datasource for Grafana
           menu:
             docs:
               parent: 'victoriametrics'
               weight: 38
           aliases:
+          - /victoriametrics-datasource.html
+          # old doc name before it was renamed
+          - /grafana-datasource/
           - /grafana-datasource.html
           ---
-          ' > ../__vm-docs-repo/docs/grafana-datasource.md
+          ' > ../__vm-docs-repo/docs/victoriametrics-datasource.md
 
-          cat ./README.md >>  ../__vm-docs-repo/docs/grafana-datasource.md
-          sed -i 's|docs/assets/||g' ../__vm-docs-repo/docs/grafana-datasource.md
+          cat ./README.md >>  ../__vm-docs-repo/docs/victoriametrics-datasource.md
+          sed -i 's|docs/assets/||g' ../__vm-docs-repo/docs/victoriametrics-datasource.md
           
           cp docs/assets/* ../__vm-docs-repo/docs/
         working-directory: "__vm-datasource-repo"
